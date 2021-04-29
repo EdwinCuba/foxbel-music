@@ -1,0 +1,53 @@
+@use '../utils/colors';
+
+.playing{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background-color: colors.$principal-red;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+
+  .music{
+    display: flex;
+    justify-content: space-between;
+    color: colors.$white;
+
+    img{
+      width: 100px;
+      height: 100px;
+      margin-right: 5px;
+    }
+
+    .info{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      h3{
+        font-size: 2rem;
+        font-weight: 700;
+      }
+      span{
+        font-size: 1.6rem;
+        font-weight: 400;
+      }
+    }
+  }
+
+  .rep-options{
+    svg:not(:root).svg-inline--fa{
+      color: colors.$white;
+      font-size: 2rem;
+      margin: 0 15px;
+    }
+  }
+
+  .volume-controller{
+    display: none;
+  }
+}

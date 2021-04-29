@@ -3,6 +3,7 @@ import Header from '../components/Header'
 import NavigationBar from '../components/NavigationBar';
 import MediaDetails from '../components/MediaDetails';
 import SearchResults from '../components/SearchResults';
+import Playing from '../components/Playing';
 import '../assets/styles/containers/App.scss'
 
 const App = () => {
@@ -19,6 +20,8 @@ const App = () => {
 
 				<SearchResults />
 			</main>
+
+			<Playing />
 		</div>
 	)
 }
