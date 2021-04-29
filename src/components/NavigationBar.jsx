@@ -1,15 +1,22 @@
 import React from "react";
 import FoxbelIcon from "../assets/static/foxbel-music.png";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import '../assets/styles/components/NavigationBar.scss';
 
-const NavigationBar = () => {
+const NavigationBar = props => {
+	const { setIsOpen } = props;
+
+
 	return (
 		<div className="navigation-bar">
 			<div className="navigation-bar__header">
 				<img src={FoxbelIcon} />
-				<FontAwesomeIcon id="close-nav" icon={faTimes} />
+				<FontAwesomeIcon
+					id="close-nav"
+					icon={faTimes}
+					onClick={() => setIsOpen(false)}
+				/>
 			</div>
 
 			<div className="navigation">
