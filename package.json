@@ -4,7 +4,8 @@
   "description": "Reproducto de musica conectado a la API de Deezer.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "webpack --mode production",
+    "start": "webpack serve --mode development"
   },
   "repository": {
     "type": "git",
@@ -19,5 +20,22 @@
   "bugs": {
     "url": "https://github.com/EdwinOlaffCubaDavila/foxbel-music/issues"
   },
-  "homepage": "https://github.com/EdwinOlaffCubaDavila/foxbel-music#readme"
+  "homepage": "https://github.com/EdwinOlaffCubaDavila/foxbel-music#readme",
+  "devDependencies": {
+    "@babel/core": "^7.13.16",
+    "@babel/preset-env": "^7.13.15",
+    "@babel/preset-react": "^7.13.13",
+    "babel-loader": "^8.2.2",
+    "css-loader": "^5.2.4",
+    "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^5.3.1",
+    "mini-css-extract-plugin": "^1.5.1",
+    "webpack": "^5.36.1",
+    "webpack-cli": "^4.6.0",
+    "webpack-dev-server": "^3.11.2"
+  },
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  }
 }
