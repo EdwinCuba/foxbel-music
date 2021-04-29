@@ -1,0 +1,97 @@
+@use '../utils/colors';
+$bg: rgba(167, 0, 0, 0.7);
+$btn-border: #EB5757;
+
+.media-details{
+  width: 100%;
+  padding: 10px;
+}
+
+.md__container{
+  width: 100%;
+  padding: 20px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  img{
+    width: 250px;
+    height: 250px;
+    margin-bottom: 50px;
+  }
+
+  .details{
+    text-align: center;
+  }
+}
+
+.md__container::before{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:linear-gradient(0deg, $bg, $bg),
+             url('https://www.lucushost.com/blog/wp-content/uploads/2020/06/error-403-forbidden.png');
+  mix-blend-mode: normal;
+  opacity: 0.5;
+  z-index: -1;
+}
+
+.basic-info{
+  color: colors.$white;
+  margin-bottom: 30px;
+
+  h2{
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 4.6rem;
+    margin-bottom: 10px
+  }
+  h3{
+    font-size: 2.6rem;
+    font-weight: 400;
+    line-height: 3rem;
+    margin-bottom: 5px;
+  }
+  span{
+    color: colors.$dark-red-secondary;
+    font-size: 1.6rem;
+    font-weight: 400; 
+    line-height: 2rem;
+  }
+}
+
+.details p{
+  color: colors.$white;
+  font-size: 2.3rem;
+  font-weight: 400;
+  line-height: 3rem;
+  margin-bottom: 30px;
+}
+
+.details .buttons{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  button{
+    width: 140px;
+    height: 60px;
+    border: 2px solid $btn-border;
+    border-radius: 30px;
+    margin: 0 10px;
+    font-size: 2rem;
+  }
+
+  .play{
+    color: colors.$white;
+    background-color: colors.$principal-red;
+  }
+  .follow{
+    color: $btn-border;
+    background-color: transparent;
+  }
+}
