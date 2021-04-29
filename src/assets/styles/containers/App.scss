@@ -1,0 +1,38 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap');
+
+//Colors
+$principal-red: #E86060;
+$dark-red-secondary: #662323;
+$light-red: #FF7676;
+$white: #ffffff;
+$gray: #828282;
+$soft-gray: #BDBDBD;
+
+*{
+  margin: 0%;
+  padding: 0;;
+  box-sizing: border-box;
+}
+html{
+  font-size: 62.5%;
+  font-family: 'Quicksand', sans-serif;
+}
+body{
+  width: 100%;
+  min-height: 100vh;
+}
+a{
+  text-decoration: none;
+  color: $white;
+}
+
+
+aside{
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: -0;
+  height: 100vh;
+  background-color: $dark-red-secondary;
+}

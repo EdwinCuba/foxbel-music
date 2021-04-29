@@ -21,8 +21,8 @@ module.exports = {
                 }
             },
             {
-                test: /\.css$/,
-                use: [MiniCSSExtractPlugin.loader, "css-loader"]
+                test: /\.scss$/,
+                use: [MiniCSSExtractPlugin.loader, "css-loader", "sass-loader"]
             },
             {
                 test: /\.(png|svg|jpg|jpeg|gif)$/,
@@ -38,7 +38,7 @@ module.exports = {
             filename: 'src/assets/styles/[name].css'
         })
     ],
-    devServer:{
+    devServer: {
         contentBase: path.resolve(__dirname, 'dist'),
         port: 5500,
         compress: true
