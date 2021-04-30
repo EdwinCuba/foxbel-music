@@ -9,6 +9,7 @@ const Playing = (props) => {
   const { id, title_short, preview, artist, album } = props.playing;
   const { setPlaying, queue } = props;
   const [isPlay, setPlay] = useState(true);
+  const [isLow, setIsLow] = useState(false);
   const [count, setCount] = useState(-1);
 
   const playBefore = () => {
@@ -25,7 +26,6 @@ const Playing = (props) => {
       setPlaying(queue[index]);
     }
   }
-
   const play = () => {
     audio.play();
     setPlay(true);
@@ -39,6 +39,16 @@ const Playing = (props) => {
       play();
     } if (!audio.paused && isPlay) {
       pause();
+    }
+  }
+
+  const handleVolume = event => {
+    let value = event.target.value;
+    audio.volume = value / 100;
+    if (value > 50) {
+      setIsLow(false);
+    } else {
+      setIsLow(true);
     }
   }
 
@@ -59,7 +69,7 @@ const Playing = (props) => {
 
   return (
     <>
-      <div className="playing" style={{ display: !preview ? 'none' : 'flex' }}>
+      <div className="playing" style={{ bottom: !preview ? '-100%' : '0' }}>
         <div className="music">
           <img src={album?.cover} alt="img" />
 
@@ -76,11 +86,17 @@ const Playing = (props) => {
         </div>
 
         <div className="volume-controller">
-          <div className="nivel">
-            <span></span>
-          </div>
+          <input
+            className="nive l"
+            type="range"
+            min="0"
+            max="100"
+            step="1"
+            onChange={handleVolume}
+          />
+          <span></span>
 
-          <FontAwesomeIcon icon={faVolumeUp} />
+          <FontAwesomeIcon icon={(isLow) ? faVolumeOff : faVolumeUp} />
         </div>
       </div>
       <audio id="audio"></audio>

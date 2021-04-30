@@ -60,3 +60,50 @@
     display: none;
   }
 }
+
+@media screen and (min-width: 400px) {
+  .playing .music .info{
+    width: auto;
+  }
+}
+@media screen and (min-width: 580px) {
+  .playing{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    .music{
+      width: 100%;
+      justify-content: flex-start;
+      justify-self: start;
+      overflow: hidden;
+      
+      .info{
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+      }
+    }
+
+    .rep-options{
+      justify-self: center;
+    }
+    
+    .volume-controller{
+      justify-self: end;
+      margin-right: 10px;
+      display: flex;
+      align-items: center;
+
+      input{
+        margin-right: 10px;
+        // background-image:linear-gradient(to right, #02C38A  calc($value*1%), black 0);
+        
+      }
+      svg:not(:root).svg-inline--fa{
+        width: 30px;
+        font-size: 2rem;
+        color: colors.$white;
+      }
+    }
+  }
+}
