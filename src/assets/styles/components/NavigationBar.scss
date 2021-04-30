@@ -42,3 +42,9 @@ $white: #ffffff;
   line-height: 3rem;
   margin-bottom: 10px;
 }
+
+@media screen and (min-width: 650px){
+  .navigation-bar{
+    max-width: 330px;
+  }
+}

@@ -32,7 +32,10 @@ const Header = props => {
           <FontAwesomeIcon icon={faSearch} id="search-logo" onClick={handleSubmit} />
         </div>
 
-        <FontAwesomeIcon icon={faUser} id="user-logo" />
+        <div className="user">
+          <FontAwesomeIcon icon={faUser} id="user-logo" />
+          <span>Edwin Cuba</span>
+        </div>
       </header>
 
       {(isOpen) ? (

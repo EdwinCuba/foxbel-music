@@ -7,6 +7,10 @@ header{
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  .user span{
+    display: none;
+  }
 }
 #open-nav,
 #user-logo{
@@ -37,4 +41,39 @@ header .search{
 }
 ::placeholder{
   color: colors.$soft-gray;
+}
+
+@media screen and (min-width: 768px){
+  header{ 
+    padding: 30px 40px;
+    height: auto;
+    justify-content: flex-start;
+
+    .search{
+      max-width: 524px;
+      height: 34px;
+
+      margin-left: 30px;
+
+      input{
+        font-size: 1.8rem;
+        line-height: 2.25rem;
+      }
+    }
+
+    .user{
+      position: absolute;
+      top: 30px;
+      right: 40px;
+      display: flex;
+      align-items: center;
+
+      span{
+        display: inline-block;
+        font-size: 1.8rem;
+        font-weight: 300;
+        margin-left: 10px;
+      }
+    }
+  }
 }

@@ -31,3 +31,8 @@ aside{
   overflow-y: scroll;
   transition: all .4s ease;
 }
+@media screen and (min-width: 600px){
+  aside{
+    max-width: 330px;
+  }
+}
