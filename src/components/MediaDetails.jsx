@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { setPlaying } from '../actions';
+import { setPlaying, addToQueue } from '../actions';
 import searchSongByArtist from '../assets/utils/searchSongByArtist';
 import searchArtist from '../assets/utils/searchArtist';
 import '../assets/styles/components/MediaDetails.scss';
@@ -32,6 +32,7 @@ const MediaDetails = props => {
 
   const handlePlay = song => {
     props.setPlaying(song);
+    props.addToQueue(song);
   }
 
   return (
@@ -73,7 +74,8 @@ const mapStateToProps = state => {
   });
 }
 const mapdDispatchToProps = {
-  setPlaying
+  setPlaying,
+  addToQueue
 }
 
 export default connect(mapStateToProps, mapdDispatchToProps)(MediaDetails);
