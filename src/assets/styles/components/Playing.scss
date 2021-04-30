@@ -68,6 +68,7 @@
 }
 @media screen and (min-width: 580px) {
   .playing{
+    height: 80px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
 
