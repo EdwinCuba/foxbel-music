@@ -24,17 +24,26 @@
     }
 
     .info{
+      width: 150px;
       display: flex;
       flex-direction: column;
       justify-content: center;
 
       h3{
+        width: 100%; 
         font-size: 2rem;
         font-weight: 700;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
       }
       span{
+        width: 100%;
         font-size: 1.6rem;
         font-weight: 400;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
       }
     }
   }

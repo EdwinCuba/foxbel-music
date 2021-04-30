@@ -1,36 +1,103 @@
-import React from 'react';
-import Img from '../assets/static/test/adele-21.png';
+import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
+import { setPlaying } from '../actions';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStepBackward, faPlay, faStepForward, faVolumeUp, faVolumeOff } from '@fortawesome/free-solid-svg-icons';
+import { faStepBackward, faPlay, faPause, faStepForward, faVolumeUp, faVolumeOff } from '@fortawesome/free-solid-svg-icons';
 import '../assets/styles/components/Playing.scss';
 
-const Playing = () => {
+const Playing = (props) => {
+  let { id, title, name, cover, preview } = props.data;
+  const { setPlaying, queue } = props;
+  const [isPlay, setPlay] = useState(true);
+  const [count, setCount] = useState(-1);
+
+  const playBefore = () => {
+    console.log(count)
+    if (count > 0) {
+      let index = count - 1;
+      setCount(index - 1);
+      setPlaying(queue[index]);
+    }
+  }
+  const playNext = () => {
+    console.log(count)
+    if (count < queue.length - 1) {
+      let index = count + 1;;
+      setCount(index - 1);
+      setPlaying(queue[index]);
+    }
+  }
+
+  const play = () => {
+    audio.play();
+    setPlay(true);
+  }
+  const pause = () => {
+    audio.pause();
+    setPlay(false);
+  }
+  const handlePlay = () => {
+    if (audio.paused && !isPlay) {
+      play();
+    } if (!audio.paused && isPlay) {
+      pause();
+    }
+  }
+
+  useEffect(() => {
+    if (preview != undefined) {
+      let audio = document.querySelector('#audio');
+      audio.src = preview;
+      audio.play();
+
+      console.log(count);
+      setCount(count + 1);
+    }
+
+    return () => {
+      audio.pause();
+    }
+  }, [preview]);
+
   return (
-    <div className="playing">
-      <div className="music">
-        <img src={Img} alt="img" />
+    <>
+      <div className="playing" style={{ display: !preview ? 'none' : 'flex' }}>
+        <div className="music">
+          <img src={cover} alt="img" />
 
-        <div className="info">
-          <h3>Cancion</h3>
-          <span>Artista - Album</span>
-        </div>
-      </div>
-
-      <div className="rep-options">
-        <FontAwesomeIcon icon={faStepBackward} />
-        <FontAwesomeIcon icon={faPlay} />
-        <FontAwesomeIcon icon={faStepForward} />
-      </div>
-
-      <div className="volume-controller">
-        <div className="nivel">
-          <span></span>
+          <div className="info">
+            <h3>{`${title}`}</h3>
+            <span>{`${name}`}</span>
+          </div>
         </div>
 
-        <FontAwesomeIcon icon={faVolumeUp} />
+        <div className="rep-options">
+          <FontAwesomeIcon icon={faStepBackward} onClick={playBefore} />
+          <FontAwesomeIcon icon={(isPlay) ? faPause : faPlay} onClick={handlePlay} />
+          <FontAwesomeIcon icon={faStepForward} onClick={playNext} />
+        </div>
+
+        <div className="volume-controller">
+          <div className="nivel">
+            <span></span>
+          </div>
+
+          <FontAwesomeIcon icon={faVolumeUp} />
+        </div>
       </div>
-    </div>
-  );
+      <audio id="audio"></audio>
+    </>
+  )
 }
 
-export default Playing;
+const mapStateToProps = state => {
+  return ({
+    data: state.playing,
+    queue: state.queue
+  })
+}
+const mapDispatchToProps = {
+  setPlaying
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Playing);

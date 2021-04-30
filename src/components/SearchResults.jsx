@@ -1,20 +1,26 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setPlaying } from '../actions';
+import { setPlaying, addToQueue } from '../actions';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay } from '@fortawesome/free-solid-svg-icons';
 import '../assets/styles/components/SearchResults.scss';
 
-const SearchResults = ({ results, setPlaying }) => {
-  let audio = React.createRef();
+const SearchResults = ({ results, setPlaying, addToQueue }) => {
   const handlePlaying = data => {
     setPlaying({
-      [data.id]: data.id,
-      [data.title_short]: data.title_short,
-      [data.artist.name]: data.artist.name,
-      [data.album.cover]: data.album.cover,
-      [data.preview]: data.preview
-    })
+      id: data.id,
+      title: data.title_short,
+      name: data.artist.name,
+      cover: data.album.cover,
+      preview: data.preview
+    });
+    addToQueue({
+      id: data.id,
+      title: data.title_short,
+      name: data.artist.name,
+      cover: data.album.cover,
+      preview: data.preview
+    });
   }
 
   return (
@@ -54,7 +60,8 @@ const mapStateToProps = state => {
   }
 };
 const mapDispatchToProps = {
-  setPlaying
+  setPlaying,
+  addToQueue
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(SearchResults);

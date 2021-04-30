@@ -9,6 +9,7 @@ const initialState = {
   search: '',
   results: [],
   playing: {},
+  queue: [],
   volume: 50
 }
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
