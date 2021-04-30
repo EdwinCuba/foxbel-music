@@ -6,20 +6,12 @@ import { faPlay } from '@fortawesome/free-solid-svg-icons';
 import '../assets/styles/components/SearchResults.scss';
 
 const SearchResults = ({ results, setPlaying, addToQueue }) => {
-  const handlePlaying = data => {
+  const handlePlaying = item => {
     setPlaying({
-      id: data.id,
-      title: data.title_short,
-      name: data.artist.name,
-      cover: data.album.cover,
-      preview: data.preview
+      ...item
     });
     addToQueue({
-      id: data.id,
-      title: data.title_short,
-      name: data.artist.name,
-      cover: data.album.cover,
-      preview: data.preview
+      ...item
     });
   }
 

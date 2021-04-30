@@ -1,6 +1,7 @@
 @use '../utils/colors';
 $bg: rgba(167, 0, 0, 0.7);
 $btn-border: #EB5757;
+$bg-image: 'https://cdns-images.dzcdn.net/images/artist/2a03e7b1880b35f0ac4da400976d0885/1000x1000-000000-80-0-0.jpg';
 
 .media-details{
   width: 100%;
@@ -34,7 +35,7 @@ $btn-border: #EB5757;
   width: 100%;
   height: 100%;
   background:linear-gradient(0deg, $bg, $bg),
-             url('https://www.lucushost.com/blog/wp-content/uploads/2020/06/error-403-forbidden.png');
+             url($bg-image);
   mix-blend-mode: normal;
   opacity: 0.5;
   z-index: -1;

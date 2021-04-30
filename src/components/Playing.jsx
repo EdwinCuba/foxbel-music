@@ -6,13 +6,12 @@ import { faStepBackward, faPlay, faPause, faStepForward, faVolumeUp, faVolumeOff
 import '../assets/styles/components/Playing.scss';
 
 const Playing = (props) => {
-  let { id, title, name, cover, preview } = props.data;
+  const { id, title_short, preview, artist, album } = props.playing;
   const { setPlaying, queue } = props;
   const [isPlay, setPlay] = useState(true);
   const [count, setCount] = useState(-1);
 
   const playBefore = () => {
-    console.log(count)
     if (count > 0) {
       let index = count - 1;
       setCount(index - 1);
@@ -20,7 +19,6 @@ const Playing = (props) => {
     }
   }
   const playNext = () => {
-    console.log(count)
     if (count < queue.length - 1) {
       let index = count + 1;;
       setCount(index - 1);
@@ -63,11 +61,11 @@ const Playing = (props) => {
     <>
       <div className="playing" style={{ display: !preview ? 'none' : 'flex' }}>
         <div className="music">
-          <img src={cover} alt="img" />
+          <img src={album?.cover} alt="img" />
 
           <div className="info">
-            <h3>{`${title}`}</h3>
-            <span>{`${name}`}</span>
+            <h3>{`${title_short}`}</h3>
+            <span>{`${artist?.name}`}</span>
           </div>
         </div>
 
@@ -91,10 +89,10 @@ const Playing = (props) => {
 }
 
 const mapStateToProps = state => {
-  return ({
-    data: state.playing,
+  return {
+    playing: state.playing,
     queue: state.queue
-  })
+  }
 }
 const mapDispatchToProps = {
   setPlaying
