@@ -16,7 +16,7 @@
 .results{
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 160px 160px;
+  grid-template-columns: repeat(2, 160px);
   justify-content: center;
   grid-gap: 20px;
 
@@ -51,3 +51,21 @@
   }
 }
 
+@media screen and (min-width: 590px){
+  .results{
+    grid-template-columns: repeat(3, 160px);
+  }
+}
+@media screen and (min-width: 768px){
+  .search-results h2{
+    text-align: left;
+  }
+  .results{
+    grid-template-columns: repeat(4, 160px);
+  }
+}
+@media screen and (min-width: 1024px){
+  .results{
+    grid-template-columns: repeat(5, 160px);
+  }
+}
