@@ -39,13 +39,13 @@ const Header = props => {
       </header>
 
       {(isOpen) ? (
-        <aside style={{ left: 0 }}>
+        <aside className="open">
           <NavigationBar
             setIsOpen={setIsOpen}
           />
         </aside>
       ) : (
-        <aside style={{ left: -100 + "%" }}>
+        <aside>
           <NavigationBar
             setIsOpen={setIsOpen}
           />

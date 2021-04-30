@@ -158,3 +158,8 @@ $bg-image: 'https://cdns-images.dzcdn.net/images/artist/2a03e7b1880b35f0ac4da400
     }
   }
 }
+@media screen and (min-width: 768px) {
+  .media-details{
+    padding: 0 40px;
+  }
+}

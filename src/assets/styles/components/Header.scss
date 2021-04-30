@@ -77,3 +77,12 @@ header .search{
     }
   }
 }
+@media screen and (min-width: 1300px){
+  #open-nav{
+    display: none
+  }
+
+  header .search{
+    margin: 0;
+  }
+}

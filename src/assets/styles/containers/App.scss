@@ -31,8 +31,20 @@ aside{
   overflow-y: scroll;
   transition: all .4s ease;
 }
+aside.open{
+  left: 0;
+}
 @media screen and (min-width: 600px){
   aside{
     max-width: 330px;
+  }
+}
+@media screen and (min-width: 1300px){
+  .App{
+    padding-left: 330px;
+  }
+  aside{
+    z-index: 10;
+    left: 0;
   }
 }
