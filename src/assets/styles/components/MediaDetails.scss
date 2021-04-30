@@ -6,11 +6,14 @@ $bg-image: 'https://cdns-images.dzcdn.net/images/artist/2a03e7b1880b35f0ac4da400
 .media-details{
   width: 100%;
   padding: 20px;
+  padding-bottom: 110px;
 }
 
 .md__container{
   width: 100%;
+  max-width: 600px;
   padding: 50px 20px;
+  margin: 0 auto;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -85,6 +88,7 @@ $bg-image: 'https://cdns-images.dzcdn.net/images/artist/2a03e7b1880b35f0ac4da400
     border-radius: 30px;
     margin: 0 10px;
     font-size: 2rem;
+    outline: none;
   }
 
   .play{
@@ -94,5 +98,63 @@ $bg-image: 'https://cdns-images.dzcdn.net/images/artist/2a03e7b1880b35f0ac4da400
   .follow{
     color: $btn-border;
     background-color: transparent;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .media-details{
+    padding-bottom: 50px;
+  }
+  .md__container{
+    max-width: 890px;
+    flex-direction: row;
+    padding-top: 40px;
+    padding-left: 250px;
+
+    img{
+      margin: 0;
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+    }
+    .details{
+      height: 100%;
+      margin: 0;
+      margin-left: 30px;
+      text-align: left;
+      position: relative;
+
+      p{
+        font-size: 1.2rem;
+      }
+    }
+    .buttons{
+      justify-content: flex-start;
+      
+      button{
+        width: 117px;
+        height: 31px;
+        font-size: 1.4rem;
+      }
+    }
+  }
+
+  .basic-info{
+    margin-bottom: 0;
+
+    h2{
+      font-size: 2.2rem;
+      margin-bottom: 0;
+    }
+
+    .stats{
+      display: flex;
+      align-items: center;
+      h3{
+        margin-right: 30px;
+        font-size: 1rem;
+      }
+    }
   }
 }

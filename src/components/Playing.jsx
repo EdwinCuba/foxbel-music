@@ -58,7 +58,6 @@ const Playing = (props) => {
       audio.src = preview;
       play();
 
-      console.log(count);
       setCount(count + 1);
     }
 
