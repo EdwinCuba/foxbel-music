@@ -48,7 +48,7 @@ const Playing = (props) => {
     if (preview != undefined) {
       let audio = document.querySelector('#audio');
       audio.src = preview;
-      audio.play();
+      play();
 
       console.log(count);
       setCount(count + 1);
