@@ -1,5 +1,5 @@
 const searching = async input => {
-  const cors = 'https://cors-anywhere.herokuapp.com/';
+  const cors = '/cors-proxy/';
   const API = 'https://api.deezer.com/search?q=';
   const url = `${cors}${API}${input};`
   const response = await fetch(url);

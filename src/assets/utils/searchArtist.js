@@ -1,5 +1,5 @@
 const searchArtist = async id => {
-  const cors = 'https://cors-anywhere.herokuapp.com/';
+  const cors = '/cors-proxy/';
   const API = 'https://api.deezer.com/artist/';
   const url = `${cors}${API}${id}`;
 
