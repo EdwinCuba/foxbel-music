@@ -6,41 +6,50 @@ import searchArtist from '../assets/utils/searchArtist';
 import '../assets/styles/components/MediaDetails.scss';
 
 const MediaDetails = props => {
-  const [isSong, setIsSong] = useState(false);
+  const { results, search, setPlaying, addToQueue } = props;
+  const artistDesc = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed venenatis velit, auctor scelerisque lacus. Ut tincidunt tempor leo a volutpat.';
+
+  const [isFirst, setIsFirst] = useState(true);
   const [song, setSong] = useState({});
   const [songs, setSongs] = useState({});
   const [artist, setArtist] = useState({});
-  const [artistDesc, setArtistdesc] = useState({});
 
   useEffect(async () => {
-    const favoriteArtist = 'twice';
-    const artistId = '161553';
-    const artist = await searchArtist(artistId);
+    if (isFirst) {
+      const favoriteArtist = 'twice';
+      const artistId = '161553';
+      const artist = await searchArtist(artistId);
 
-    const artistDesc = 'Twice (en hangul, 트와이스; romanización revisada del coreano, Teuwaiseu; estilizado como TWICE) es un grupo femenino surcoreano formado por JYP Entertainment a través del programa Sixteen (2015).';
+      const searchSongs = await searchSongByArtist(artistId);
+      const songs = searchSongs.data;
+      const firstSong = songs[0];
 
-    const searchSongs = await searchSongByArtist(artistId);
-    const songs = searchSongs.data;
-    const cant = Object.keys(songs).length;
-    const random = Math.round(Math.random() * cant);
-    const temp = songs[random];
+      setSongs(songs)
+      setSong(firstSong);
+      setArtist(artist);
 
-    setSongs(songs)
-    setSong(temp);
-    setArtist(artist);
-    setArtistdesc(artistDesc)
-    setIsSong(true)
-  }, [isSong])
+      search(songs);
+      setIsFirst(false);
+    } else {
+      const firstSong = results[0];
+      const artistId = firstSong.artist.id;
+      const artist = await searchArtist(artistId);
+
+      setSongs(results);
+      setSong(firstSong);
+      setArtist(artist);
+    }
+  }, [results])
 
   const handlePlay = (song, songs) => {
-    props.search(songs)
-    props.setPlaying(song);
-    props.addToQueue(song);
+    search(songs)
+    setPlaying(song);
+    addToQueue(song);
   }
 
   return (
     <>
-      {(Object.keys(props.results).length === 0 && isSong) ? (
+      {(Object.keys(props.results).length > 0) ? (
 
         <div className="media-details" >
           <div className="md__container" >

@@ -8,14 +8,19 @@ import searching from '../assets/utils/searching';
 import '../assets/styles/components/Header.scss';
 
 const Header = props => {
-  let [isOpen, setIsOpen] = useState(false);
-  let [input, setInput] = useState('');
+  const [isOpen, setIsOpen] = useState(false);
+  const [input, setInput] = useState('');
   const handleInput = event => {
     setInput(event.target.value);
   }
   const handleSubmit = async () => {
     const results = await searching(input);
     props.search(results.data);
+  }
+  const handleEnter = ({ key, keyCode }) => {
+    if (key === 'Enter' || keyCode === 13) {
+      handleSubmit();
+    }
   }
 
   return (
@@ -28,7 +33,7 @@ const Header = props => {
         />
 
         <div className="search">
-          <input type="text" placeholder="Buscar" onChange={handleInput} />
+          <input type="text" placeholder="Buscar" onChange={handleInput} onKeyDown={handleEnter} />
           <FontAwesomeIcon icon={faSearch} id="search-logo" onClick={handleSubmit} />
         </div>
 
