@@ -13,6 +13,8 @@ const MediaDetails = props => {
   const [song, setSong] = useState({});
   const [songs, setSongs] = useState({});
   const [artist, setArtist] = useState({});
+  const [bgImage, setBgImage] = useState('');
+
 
   useEffect(async () => {
     if (isFirst) {
@@ -51,8 +53,14 @@ const MediaDetails = props => {
     <>
       {(Object.keys(props.results).length > 0) ? (
 
-        <div className="media-details" >
+        <div className="media-details">
           <div className="md__container" >
+            <div
+              className="bg"
+              style={{
+                background: `linear-gradient(0deg, rgba(167, 0, 0, 0.7), rgba(167, 0, 0, 0.7)),url(${artist.picture_xl})`
+              }}
+            ></div>
             <img src={artist.picture} alt="Test" />
 
             <div className="details">
@@ -72,7 +80,7 @@ const MediaDetails = props => {
               </div>
             </div>
           </div>
-        </div>
+        </div >
       ) :
         (
           <></>
